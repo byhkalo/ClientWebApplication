@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
+  <mat-toolbar color='primary'>
+    <!-- <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      > -->
+      <!-- *ngIf="isHandset$ | async" -->
+      <!-- <mat-icon aria-label="Side nav toggle icon">menu</mat-icon> -->
+    <!-- </button> -->
+    <span>Gadget Shop</span>
+    <span class="example-fill-remaining-space"></span>
+    
+    <button class="menuButton" matBadge="{{productsCount}}" mat-raised-button (click)="openBasket()">Basket</button>
+    <div class="basketText">
+        Total Count: {{productsCount}}
+        Total Price: {{productsSum}}
+    </div>
+    
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>
+
+

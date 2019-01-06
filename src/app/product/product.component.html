@@ -1,0 +1,21 @@
+<mat-card class="dashboard-card" (click)="openProductDetail($event)">
+    <mat-card-header>
+      <mat-card-title>
+        {{product.name}}
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{product.imageUrl}}" alt="">
+    <mat-card-content class="dashboard-card-content">
+        <p>
+            {{product.description.slice(0, 20)}}
+          </p>
+          <h3 *ngIf="!isExistPromotion">Price: {{product.price}}</h3>
+          <h3 *ngIf="isExistPromotion">Promotion Price {{emoji}}: {{newPromotionPrice}}</h3>
+          <h4>Count: {{product.count}}</h4>
+          <h4 *ngIf="isExistPromotion">Time Left: {{promotionTimeText}}</h4>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" [disabled]="!isCanAdd" (click)="addOneProduct($event)">ADD ONE</button>
+          <button mat-raised-button color="warn" [disabled]="!isCanRemove" (click)="removeOneProduct($event)">REMOVE ONE</button>
+        </mat-card-actions>
+  </mat-card>

@@ -1,0 +1,26 @@
+
+<div class="grid-container">
+    <h1 class="mat-h1">Products</h1>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter Products">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Sorting Type" [(ngModel)]="sortingTitle" (selectionChange)="sortingChanged($event)">
+            <mat-option *ngFor="let sortType of productsService.allSortingTypes" value="{{sortType.title}}"> {{sortType.title}} </mat-option>
+        </mat-select>
+    </mat-form-field>
+        
+    <mat-grid-list cols="4" rowHeight="550px" matSort>
+        
+        <mat-grid-tile *ngFor="let product of presentedProducts" [colspan]="1" [rowspan]="1">
+            <app-product  [product]="product"></app-product>
+        </mat-grid-tile>
+            
+    </mat-grid-list>
+        <mat-paginator class="paginator" #paginatorUnmanaged
+                        [length]="presentedProducts"
+                        [pageIndex]="0"
+                        [pageSize]="50"
+                        [pageSizeOptions]="[25, 50, 100, 250]">
+        </mat-paginator>
+</div>

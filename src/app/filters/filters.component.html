@@ -1,0 +1,19 @@
+<mat-nav-list>
+
+    <div *ngFor="let category of categoriesArray">
+        <button class="menuButton" mat-raised-button  [color]= "categories.get(category) == true ? 'primary' : 'warn'" (click)="togleCategory(category)">{{category}}</button>
+    </div>
+    
+    <div class="rangeSector" *ngIf="countRange != null">
+        <h5 class="card-title">Count</h5>
+        <ng5-slider class="sliderRange" [(value)]="countRange.minValue" [(highValue)]="countRange.maxValue" [options]="optionsCount"></ng5-slider>
+    </div>
+    
+    <div class="rangeSector" *ngIf="priceRange != null">
+        <h5 class="card-title">Price</h5>
+        <ng5-slider class="sliderRange" [(value)]="priceRange.minValue" [(highValue)]="priceRange.maxValue" [options]="optionsPrice"></ng5-slider>
+    </div>
+</mat-nav-list>
+
+
+

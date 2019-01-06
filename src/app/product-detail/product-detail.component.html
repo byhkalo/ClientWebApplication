@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Product</h2>
+<mat-dialog-content >
+
+<mat-grid-list cols="3" rowHeight="500px">
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-card-title>
+          {{product.name}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="dashboard-card-content">
+        <div>
+          <img src="{{product.imageUrl}}" class="productImage" height="100%" width="100%" alt="">
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Product Description
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+            <h1>{{product.name}}</h1>
+            <h4 class="mat-typography">{{product.description}}</h4>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Product Store Info
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div class="productStoreInfo">Category: {{product.category}}</div>
+          <div class="productStoreInfo">Count: {{product.count}}</div>
+          <div class="productStoreInfo">Price: {{product.price}}</div>
+          <button mat-raised-button class="productButton" color="primary" [disabled]="!isCanAdd" (click)="addOneProduct()">ADD ONE</button>
+          <button mat-raised-button class="productButton" color="warn" [disabled]="!isCanRemove" (click)="removeOneProduct()">REMOVE ONE</button>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+</mat-grid-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click) = "closeProduct()" mat-dialog-close>Close</button>
+</mat-dialog-actions>
