@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ProductsService } from 'src/services/product.service';
 import { Product } from 'src/models/product.model';
 import { ProductsTableDS } from './products-table-datasource';
@@ -23,14 +23,12 @@ export class ProductsComponent implements OnInit {
 
   presentedProducts: Product[] = [];
   dataSource: ProductsTableDS;
-  constructor(public productsService: ProductsService, 
-    private basketService: BasketService, 
-    private promotionService: PromotionService) { }
+  constructor(public productsService: ProductsService, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.dataSource = new ProductsTableDS([], this.paginator, this.sort)
+    this.dataSource = new ProductsTableDS(this.presentedProducts, this.paginator, this.sort)
     this.dataSource.connect().subscribe(presentedProducts => {
-      this.presentedProducts = presentedProducts
+      this.presentedProducts = presentedProducts;
     });
     this.productsService.getSortedFilteredProducts().subscribe(products => {
       this.dataSource.data = products;
@@ -39,15 +37,17 @@ export class ProductsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.cd.detectChanges();
     this.sort.sortChange.subscribe(event=>{
       this.lastSort = event;
     })
   }
+
   sortingChanged(event) {
     let sortingValue = this.productsService.allSortingTypes.find(element => {
       return element.title == event.value;
     })
-    if (this.productsService.selectedSortingType != sortingValue) {
+    if (this.productsService.selectedSortingType.title != sortingValue.title) {
       this.productsService.selectedSortingType = sortingValue
       this.sortingTitle = sortingValue.title
       this.apply()

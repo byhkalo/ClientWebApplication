@@ -32,8 +32,4 @@ export class ProductDetailComponent implements OnInit {
   removeOneProduct() {
     this.basketService.removeOne(this.product, true);
   }
-
-  closeProduct() {
-
-  }
 }

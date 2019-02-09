@@ -1,11 +1,11 @@
 <h2 mat-dialog-title>Product</h2>
-<mat-dialog-content >
+<mat-dialog-content class="product-detail">
 
 <mat-grid-list cols="3" rowHeight="500px">
   <mat-grid-tile [colspan]="1" [rowspan]="1">
     <mat-card class="dashboard-card">
       <mat-card-header>
-        <mat-card-title>
+        <mat-card-title class="product-title">
           {{product.name}}
         </mat-card-title>
       </mat-card-header>
@@ -40,10 +40,10 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div class="productStoreInfo">Category: {{product.category}}</div>
-          <div class="productStoreInfo">Count: {{product.count}}</div>
-          <div class="productStoreInfo">Price: {{product.price}}</div>
-          <button mat-raised-button class="productButton" color="primary" [disabled]="!isCanAdd" (click)="addOneProduct()">ADD ONE</button>
-          <button mat-raised-button class="productButton" color="warn" [disabled]="!isCanRemove" (click)="removeOneProduct()">REMOVE ONE</button>
+          <div class="product-count productStoreInfo">Count: {{product.count}}</div>
+          <div class="product-price productStoreInfo">Price: {{product.price}}</div>
+          <button mat-raised-button class="add-one productButton" color="primary" [disabled]="!isCanAdd" (click)="addOneProduct()">ADD ONE</button>
+          <button mat-raised-button class="remove-one productButton" color="warn" [disabled]="!isCanRemove" (click)="removeOneProduct()">REMOVE ONE</button>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -51,5 +51,5 @@
 </mat-grid-list>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="primary" (click) = "closeProduct()" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" mat-dialog-close class="close-product-detail">Close</button>
 </mat-dialog-actions>

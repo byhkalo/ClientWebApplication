@@ -66,10 +66,6 @@ export class BasketComponent implements OnInit {
             width: '1000px', 
             height: '650px'
           });
-        
-        dialogRef.afterClosed().subscribe(result => {
-          console.log(`Dialog result: ${result}`);
-        });
     }
   }
 }

@@ -61,10 +61,6 @@ export class ProductComponent implements OnInit {
     if (this.product.promotionId != null) {
       this.promotion = this.promotionService.getPromotionById(this.product.promotionId);
     }
-    if (this.observableTimeHandler != null) {
-      // this.observableTimeHandler.unsubscribe();
-      // this.observableTimeHandler = null;
-    }
     if (this.promotion != null) {
       this.observableTimeHandler = this.promotionService.getObservablePromotion(this.promotion.id)
       this.observableTimeHandler.subscribe(timeState => {
@@ -100,9 +96,5 @@ export class ProductComponent implements OnInit {
         height: '650px',
         data: this.product
       });
-    
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 }

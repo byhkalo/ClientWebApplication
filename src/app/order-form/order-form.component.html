@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="First name" [(ngModel)]="firstNameValue" formControlName="firstName">
+            <input matInput class="firstName" placeholder="First name" [(ngModel)]="firstNameValue" formControlName="firstName">
             <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
               First name is <strong>required</strong>
             </mat-error>
@@ -16,7 +16,7 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Last name" [(ngModel)]="lastNameValue" formControlName="lastName">
+            <input matInput class="lastName" placeholder="Last name" [(ngModel)]="lastNameValue" formControlName="lastName">
             <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
               Last name is <strong>required</strong>
             </mat-error>
@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="E-Mail" [(ngModel)]="emailValue" formControlName="email">
+            <input matInput class="email" placeholder="E-Mail" [(ngModel)]="emailValue" formControlName="email">
             <mat-error *ngIf="addressForm.get('email').invalid">
               Email should be <strong>correct</strong>
             </mat-error>
@@ -34,7 +34,7 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Phone" [(ngModel)]="telephoneValue" formControlName="phone">
+            <input matInput class="phone" placeholder="Phone" [(ngModel)]="telephoneValue" formControlName="phone">
             <mat-error *ngIf="addressForm.get('phone').invalid">
               Last name is <strong>required</strong>
             </mat-error>
@@ -45,7 +45,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <textarea matInput placeholder="Address" [(ngModel)]="addresValue" formControlName="address"></textarea>
+            <textarea matInput class="address" placeholder="Address" [(ngModel)]="addresValue" formControlName="address"></textarea>
             <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
               Address is <strong>required</strong>
             </mat-error>
@@ -55,7 +55,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-              <input matInput placeholder="City" [(ngModel)]="cityValue" formControlName="city">
+              <input matInput class="city" placeholder="City" [(ngModel)]="cityValue" formControlName="city">
             <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
               City is <strong>required</strong>
             </mat-error>
@@ -63,7 +63,7 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <mat-select placeholder="State" [(ngModel)]="stateValue" formControlName="state">
+            <mat-select class="state" placeholder="State" [(ngModel)]="stateValue" formControlName="state">
               <mat-option *ngFor="let state of states" [value]="state.abbreviation">
                 {{ state.name }}
               </mat-option>
@@ -77,7 +77,7 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-              <input matInput #postalCode placeholder="Postal Code" [(ngModel)]="postalCodeValue" formControlName="postalCode">
+              <input matInput class="postalCode" #postalCode placeholder="Postal Code" [(ngModel)]="postalCodeValue" formControlName="postalCode">
             <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
             <mat-error *ngIf="addressForm.get('postalCode').invalid">
               Postal Code is <strong>required</strong>
@@ -96,8 +96,8 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" ng-disabled="addressForm.invalid" type="submit">Submit</button>
-      <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      <button mat-raised-button class="submit" color="primary" ng-disabled="addressForm.invalid" type="submit">Submit</button>
+      <button mat-raised-button class="close" color="warn" mat-dialog-close>Close</button>
     </mat-card-actions>
   </mat-card>
 </form>

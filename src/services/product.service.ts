@@ -34,6 +34,10 @@ export class ProductsService {
 
     private allProductsQuery: AngularFireList<Product> 
     constructor(fireDatabase: AngularFireDatabase) { 
+        this.allCategories.set('Smartphones', true);
+        this.allCategories.set('Laptops', true);
+        this.allCategories.set('Monitors', true);
+        this.allCategories.set('Accessories', true);
         this.allProductsQuery = fireDatabase.list<Product>('products')
         this.allProductsQuery.valueChanges().subscribe(databaseProducts => {
             this.allProducts = databaseProducts;
@@ -48,10 +52,6 @@ export class ProductsService {
             }
             this.sortFilterProducts();
         });
-        this.allCategories.set('Smartphones', true);
-        this.allCategories.set('Laptops', true);
-        this.allCategories.set('Monitors', true);
-        this.allCategories.set('Accessories', true);
     }
     // Categories
     getAllCategories(): BehaviorSubject<Map<String, boolean>> {
